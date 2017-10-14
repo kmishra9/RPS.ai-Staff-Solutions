@@ -141,23 +141,23 @@ def determine_winner(name, move, ai_move):
 
 def play(name, ai=basic_ai, silent=False):
 
-    #Write out the prompt the user will see asking them to give the program their choice
-    prompt = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    # Write out the prompt the user will see asking them to give the program their choice
+    prompt = "Enter your move: (rock, paper, or scissors) "
 
-    #Use a function to get the user's move (using the prompt)
-    move = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    # Use a function to get the user's move (using the prompt)
+    move = input(prompt)
 
-    #Ensure the move is formatted properly (all lowercase letters)
-    move = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    # Ensure the move is formatted properly (all lowercase letters)
+    move = move.lower()
 
-    #Get the AI's move
+    # Get the AI's move
     ai_move = ai()
 
-    #Use a functional abstraction to figure out who won -- the user or the AI
-    winner = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    # Use a functional abstraction to figure out who won -- the user or the AI
+    winner = determine_winner(name, move, ai_move)
 
-    #Check if the function is supposed to be silent or not -- print only if silent is False
-    if ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<":
+    # Check if the function is supposed to be silent or not -- print only if silent is False
+    if not silent:
         print(name + " plays " + move)
         print("AI plays " + ai_move)
         print(winner)
