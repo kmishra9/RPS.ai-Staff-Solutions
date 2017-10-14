@@ -95,10 +95,10 @@ def play_again():
 
 def basic_ai():
     #The three possible moves, represented as strings
-    moves = [">>>>>YOUR CODE HERE X<<<<<", ">>>>>YOUR CODE HERE X<<<<<", ">>>>>YOUR CODE HERE X<<<<<"]
+    moves = ["rock", "paper", "scissors"]
 
     #Randomly select an index from moves
-    index = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    index = random.randint(0, 2)
 
     return moves[index]
 
