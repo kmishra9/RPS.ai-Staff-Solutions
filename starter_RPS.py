@@ -118,20 +118,20 @@ def determine_winner(name, move, ai_move):
         return "Tie, no one wins!"
 
     #Win case 1
-    elif ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<":
+    elif move == "rock" and ai_move == "scissors":
         return name + " wins!"
 
     #Win case 2
-    elif ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<":
+    elif move == "scissors" and ai_move == "paper":
         return name + " wins!"
 
     #Win case 3
-    elif ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<":
+    elif move == "paper" and ai_move == "rock":
         return name + " wins!"
 
     #Losing case
     else:
-        return ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+        return "AI wins!"
 
 #End of Step 3 #############################################################################################
 
