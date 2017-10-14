@@ -173,15 +173,15 @@ def play(name, ai=basic_ai, silent=False):
 def main():
 
     #Get the user's name
-    name = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    name = get_name()
 
-    continue_playing = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    continue_playing = True
 
     while continue_playing:
 
         play(name)
 
-        continue_playing = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+        continue_playing = play_again()
 
 #End of Step 5 #############################################################################################
 
