@@ -39,105 +39,105 @@ Abstraction Reference Guide:
 
 import random
 
-#End of first section
+# End of first section
 ############################################################################################################
 ################################## DO NOT CHANGE ANYTHING ABOVE THIS LINE ##################################    - Section 2 -
 ############################################################################################################
 
-#Start of Step 0 ###########################################################################################
+# Start of Step 0 ###########################################################################################
 
 def get_name():
-    #Write out the prompt the user will see asking them to give the program their name
+    # Write out the prompt the user will see asking them to give the program their name
     prompt = "Enter your name: "
 
-    #Use a function to get the user's name (using the prompt)
+    # Use a function to get the user's name (using the prompt)
     name = input(prompt)
 
-    #Return the name we "got" back to where this function was called
+    # Return the name we "got" back to where this function was called
     return name
 
-#End of Step 0 #############################################################################################
+# End of Step 0 #############################################################################################
 
 
 
-#Start of Step 1 ###########################################################################################
+# Start of Step 1 ###########################################################################################
 
 def play_again():
 
-    #Write out the prompt the user will see asking them whether they want to play again or not
+    # Write out the prompt the user will see asking them whether they want to play again or not
     prompt = "Do you want to play again? (yes or no) "
 
-    #Use a function to get the user's choice (using the prompt)
+    # Use a function to get the user's choice (using the prompt)
     choice = input(prompt)
 
-    #Ensure the choice string is formatted properly (all lowercase letters)
+    # Ensure the choice string is formatted properly (all lowercase letters)
     choice = choice.lower()
 
-    #If the choice was _____, the user wants to play again
+    # If the choice was _____, the user wants to play again
     if choice == 'yes':
         return True
 
-    #If the choice was _____, the user does not want to play again
+    # If the choice was _____, the user does not want to play again
     elif choice == 'no':
         return False
 
-    #If the choice was anything else, it wasn't valid input
+    # If the choice was anything else, it wasn't valid input
     else:
         print("Invalid input!\n")
         return play_again()
-        #Introduction to recursion! Ask a TA if you're curious as to how a function is calling itself!
+        # Introduction to recursion! Ask a TA if you're curious as to how a function is calling itself!
 
-#End of Step 1 #############################################################################################
+# End of Step 1 #############################################################################################
 
 
 
-#Start of Step 2 ###########################################################################################
+# Start of Step 2 ###########################################################################################
 
 def basic_ai():
-    #The three possible moves, represented as strings
+    # The three possible moves, represented as strings
     moves = ["rock", "paper", "scissors"]
 
-    #Randomly select an index from moves
+    # Randomly select an index from moves
     index = random.randint(0, 2)
 
     return moves[index]
 
-#End of Step 2 #############################################################################################
+# End of Step 2 #############################################################################################
 
 
 
-#Start of Step 3 ###########################################################################################
+# Start of Step 3 ###########################################################################################
 
 def determine_winner(name, move, ai_move):
     assert ( (move    == "rock" or move    == "paper" or move    == "scissors") and
              (ai_move == "rock" or ai_move == "paper" or ai_move == "scissors")
            ), "Wrong move or ai_move argument passed in"
 
-    #Tie case
+    # Tie case
     if move == ai_move:
         return "Tie, no one wins!"
 
-    #Win case 1
+    # Win case 1
     elif move == "rock" and ai_move == "scissors":
         return name + " wins!"
 
-    #Win case 2
+    # Win case 2
     elif move == "scissors" and ai_move == "paper":
         return name + " wins!"
 
-    #Win case 3
+    # Win case 3
     elif move == "paper" and ai_move == "rock":
         return name + " wins!"
 
-    #Losing case
+    # Losing case
     else:
         return "AI wins!"
 
-#End of Step 3 #############################################################################################
+# End of Step 3 #############################################################################################
 
 
 
-#Start of Step 4 ###########################################################################################
+# Start of Step 4 ###########################################################################################
 
 def play(name, ai=basic_ai, silent=False):
 
@@ -164,15 +164,15 @@ def play(name, ai=basic_ai, silent=False):
 
     return winner
 
-#End of Step 4 #############################################################################################
+# End of Step 4 #############################################################################################
 
 
 
-#Start of Step 5 ###########################################################################################
+# Start of Step 5 ###########################################################################################
 
 def main():
 
-    #Get the user's name
+    # Get the user's name
     name = get_name()
 
     continue_playing = True
@@ -183,7 +183,7 @@ def main():
 
         continue_playing = play_again()
 
-#End of Step 5 #############################################################################################
+# End of Step 5 #############################################################################################
 
 if __name__ == '__main__':
     main()
