@@ -65,20 +65,20 @@ def get_name():
 def play_again():
 
     #Write out the prompt the user will see asking them whether they want to play again or not
-    prompt = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    prompt = "Do you want to play again? (yes or no) "
 
     #Use a function to get the user's choice (using the prompt)
-    choice = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    choice = input(prompt)
 
     #Ensure the choice string is formatted properly (all lowercase letters)
-    choice = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    choice = choice.lower()
 
     #If the choice was _____, the user wants to play again
-    if ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<":
+    if choice == 'yes':
         return True
 
     #If the choice was _____, the user does not want to play again
-    elif ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<":
+    elif choice == 'no':
         return False
 
     #If the choice was anything else, it wasn't valid input
