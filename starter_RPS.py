@@ -48,10 +48,10 @@ import random
 
 def get_name():
     #Write out the prompt the user will see asking them to give the program their name
-    prompt = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    prompt = "Enter your name: "
 
     #Use a function to get the user's name (using the prompt)
-    name = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
+    name = input(prompt)
 
     #Return the name we "got" back to where this function was called
     return name
@@ -184,3 +184,6 @@ def main():
         continue_playing = ">>>>>>>>>>YOUR CODE HERE X<<<<<<<<<<"
 
 #End of Step 5 #############################################################################################
+
+if __name__ == '__main__':
+    main()
