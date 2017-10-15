@@ -149,7 +149,7 @@ def triple_biased_strategy(rock_bias, paper_bias, scissor_bias):
     Arg scissors_bias: a float between 0 and 1, denoting the percentage of the time scissors should be played
     @Return: a function that can be called by the simulator
     """
-    assert( round(rock_bias + paper_bias + scissor_bias, 5) == 1.0 ), "All three biases must add up to 1"
+    assert( round(rock_bias + paper_bias + scissor_bias) == 1.0 ), "All three biases must add up to 1"
 
     range_size = 100
 
@@ -233,7 +233,7 @@ def predictive_strategy():
         last_move = opp_history[size_history - 1]
 
         rock_count, paper_count, scissors_count = 0, 0, 0
-        # A dictionary would be more efficient but I'm not sure if they'd know about it
+
         for i in range(size_history - 1):
             if opp_history[i] == last_move:
                 next_move = opp_history[i + 1]
