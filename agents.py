@@ -113,14 +113,25 @@ def biased_strategy(bias, biased_move):
     Arg biased_move: a number between 0 and 2, inclusive, signifiying which move the strategy should be biased towards
     @Return: a function that can be called by the simulator
     """
+    assert 0 <= bias <= 1 and 0 <= biased_move <= 2, "Arguments to biased_strategy are invalid"
     range_size = 100
 
     def generate_biased_move():
         generated = int(random.random() * range_size)
-        ">>>>>>>>>>YOUR CODE HERE 1-0<<<<<<<<<<"
+        other_1 = (biased_move - 1) % 2
+        other_2 = (biased_move - 2) % 2
 
+        bias_bound = int(bias * range_size)
+        other_1_bound = bias_bound + (range_size - bias_bound) // 2
 
+        if generated < bias_bound:
+            return biased_move
 
+        elif generated < other_1_bound:
+            return other_1
+
+        else:
+            return other_2
 
     # Returns the function that will actually do the generation but doesn't need the arguments passed in each time
     return generate_biased_move     # Do not change
@@ -144,10 +155,12 @@ def triple_biased_strategy(rock_bias, paper_bias, scissor_bias):
 
     def generate_biased_move():
         generated = int(random.random() * range_size)
-        ">>>>>>>>>>YOUR CODE HERE 2-0<<<<<<<<<<"
-
-
-
+        if generated < rock_bias*range_size:
+            return 0
+        elif generated < rock_bias*range_size + paper_bias * range_size:
+            return 1
+        else:
+            return 2
 
     # Returns the function that will actually do the generation but doesn't need the arguments passed in each time
     return generate_biased_move     #Do not change
@@ -166,10 +179,10 @@ def deterministic_strategy():
     index = 0
 
     def generate_deterministic_move():
-        ">>>>>>>>>>YOUR CODE HERE 3-0<<<<<<<<<<"
-
-
-
+        nonlocal index
+        value = deterministic_order[index % length_of_sequence]
+        index += 1
+        return value
 
     # Returns the function that will actually do the generation but doesn't need the arguments passed in each time
     return generate_deterministic_move      #Do not change
@@ -183,13 +196,27 @@ def deterministic_strategy():
 def counter(move):
     assert(type(move) == int), "Move argument is of wrong type"
     assert(0 <= move <= 2), "Move argument is not within the proper range -- a move must be 0, 1, or 2"
-    ">>>>>>>>>>YOUR CODE HERE 4-0<<<<<<<<<<"
+    return (move + 1) % 3
 
 
 def reflexive_strategy():
     # Allows strategies to utilize the history while simulating the strategies against each other
     rock_freq, paper_freq, scissor_freq = history.get_opponent_frequency(reflexive_strategy)
-    ">>>>>>>>>>YOUR CODE HERE 4-1<<<<<<<<<<"
+    if rock_freq + paper_freq + scissor_freq == 0:
+        return random.randint(0, 2)
+    else:
+        opponent_strat = triple_biased_strategy(rock_freq, paper_freq, scissor_freq)
+        return counter(opponent_strat())
+
+"""
+Common mistake:
+
+def incorrect_reflexive():
+    rock_freq, paper_freq, scissor_freq = history.get_opponent_frequency(reflexive_strategy)
+    if rock_freq + paper_freq + scissor_freq == 0:
+        return random.randint(0, 2)
+    return triple_biased_strategy(paper_freq, scissor_freq, rock_freq)
+"""
 
 # End of Step 4 #############################################################################################
 
@@ -199,7 +226,26 @@ def reflexive_strategy():
 def predictive_strategy():
     opp_history = history.get_opponent_chronological_history(predictive_strategy)
     size_history = len(opp_history)
-    ">>>>>>>>>>YOUR CODE HERE 5-0<<<<<<<<<<"
+
+    if size_history == 0:
+        return random.randint(0, 2)
+    else:
+        last_move = opp_history[size_history - 1]
+
+        rock_count, paper_count, scissors_count = 0, 0, 0
+        # A dictionary would be more efficient but I'm not sure if they'd know about it
+        for i in range(size_history - 1):
+            if opp_history[i] == last_move:
+                next_move = opp_history[i + 1]
+                if next_move == 0:
+                    rock_count += 1
+                elif next_move == 1:
+                    paper_count += 1
+                else:
+                    scissors_count += 1
+        counts = [rock_count, paper_count, scissors_count]
+        most_frequent_move = counts.index(max(counts))
+        return counter(most_frequent_move)
 
 # End of Step 5 #############################################################################################
 
